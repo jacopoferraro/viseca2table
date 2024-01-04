@@ -1,5 +1,6 @@
 var tN = document.getElementsByClassName("name");
 var tD = document.getElementsByClassName("date-item--full");
+var tC = document.getElementsByTagName("pfm-category");
 var tA = document.querySelectorAll(
   '[data-ng-bind="transaction.amount | number: 2"]'
 );
@@ -16,8 +17,12 @@ function getName(elem) {
   return elem.firstElementChild.textContent;
 }
 
-var columns = [tD, tA, tN];
-var getters = [getDate, getAmount, getName];
+function getCategory(elem) {
+  return elem.firstElementChild.firstElementChild.lastElementChild.alt;
+}
+
+var columns = [tD, tA, tN, tC];
+var getters = [getDate, getAmount, getName, getCategory];
 
 function createTable() {
   var myTableDiv = document.getElementById("main");
@@ -42,7 +47,8 @@ function addTable() {
   }
 
   for (var i = 0; i < tN.length; i++) {
-    if (getName(columns[2][i]) == "Votre paiement - Merci") continue;
+    if (getName(columns[2][i]) == "Votre paiement - Merci" ||
+        getName(columns[2][i]) == "Suo pagamento - Grazie") continue;
     var tr = document.createElement("TR");
     tableBody.appendChild(tr);
 
