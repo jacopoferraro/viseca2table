@@ -1,6 +1,6 @@
 var tN = document.getElementsByClassName("name");
 var tD = document.getElementsByClassName("date-item--full");
-var tC = document.getElementsByTagName("pfm-category");
+var tC = document.getElementsByClassName("image-transaction-category-img");
 var tA = document.querySelectorAll(
   '[data-ng-bind="transaction.amount | number: 2"]'
 );
@@ -18,7 +18,7 @@ function getName(elem) {
 }
 
 function getCategory(elem) {
-  return elem.firstElementChild.firstElementChild.lastElementChild.alt;
+  return elem.alt;
 }
 
 var columns = [tD, tA, tN, tC];
