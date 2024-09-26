@@ -1,16 +1,14 @@
 var tN = document.getElementsByClassName("name");
 var tD = document.getElementsByClassName("date-item--full");
 var tC = document.getElementsByClassName("image-transaction-category-img");
-var tA = document.querySelectorAll(
-  '[data-ng-bind="transaction.amount | number: 2"]'
-);
+var tA = document.getElementsByClassName("transaction-info-item transaction-info-item--value");
 
 function getDate(elem) {
   return elem.textContent;
 }
 
 function getAmount(elem) {
-  return elem.textContent;
+  return elem.firstElementChild.firstElementChild.textContent;
 }
 
 function getName(elem) {
@@ -47,7 +45,8 @@ function addTable() {
   }
 
   for (var i = 0; i < tN.length; i++) {
-    if (getName(columns[2][i]) == "Votre paiement - Merci" ||
+    if (getName(columns[2][i]) == "Ihre Zahlung – Vielen Dank" ||
+        getName(columns[2][i]) == "Votre paiement - Merci" ||
         getName(columns[2][i]) == "Suo pagamento - Grazie") continue;
     var tr = document.createElement("TR");
     tableBody.appendChild(tr);
